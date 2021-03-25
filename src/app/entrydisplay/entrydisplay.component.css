@@ -1,0 +1,39 @@
+h1 {
+  text-align: center;
+  padding: 15px 0px;
+  font-size: 30px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.face {
+  display: flex;
+  justify-content: center;
+}
+
+/* .activityQuestion {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 25px;
+} */
+
+.didThis {
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 18px;
+  color: rgb(226, 226, 226);
+}
+
+/* .writeAboutIt {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 25px;
+} */

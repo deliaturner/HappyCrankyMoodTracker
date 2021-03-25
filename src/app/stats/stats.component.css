@@ -1,0 +1,121 @@
+h1 {
+  text-align: center;
+  padding: 15px 0px;
+  font-size: 35px;
+}
+
+h4, h3, h1, h2 {
+  color: #fff;
+  text-align: center;
+}
+
+.happysadbuttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.happybutton,
+.sadbutton {
+  font-family: "Ovo", serif;
+  font-size: large;
+  padding: 20px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.h-active {
+  background-color: #ffcdda!important;
+}
+
+.s-active {
+  background-color: #bfdaff!important;
+}
+
+.happybutton {
+  background-color: #fdebef;
+  margin-right: 15px;
+}
+
+.sadbutton {
+  background-color: #ecf3ff;
+}
+
+.happybutton:focus,
+.sadbutton:focus {
+  outline: none;
+}
+
+.happybutton:hover {
+  background-color: #ffcdda;
+  transition: 0.5s;
+}
+
+.sadbutton:hover {
+  background-color: #bfdaff;
+  transition: 0.5s;
+}
+
+.list {
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+.happyDays,
+.sadDays {
+  padding: 10px;
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid gray;
+}
+
+.happyDays div,
+.sadDays div {
+  padding: 10px;
+  color: #3d3d49;
+
+}
+
+.name {
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.category {
+  font-size: 16px;
+}
+
+.amount {
+  font-size: 35px;
+}
+
+.happyDays {
+  background: #d9a7c7; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #d9a7c7,
+    #fffcdc
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #d9a7c7,
+    #fffcdc
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.sadDays {
+  background: #a1c1eb; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #a1c1eb,
+    #dfdbb4
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #a1c1eb,
+    #dfdbb4
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}

@@ -1,0 +1,103 @@
+header {
+  position: fixed;
+  top: 0px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  color: white;
+  background: #3a6186; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #89253e,
+    #3a6186
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #89253e,
+    #3a6186
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  z-index: 100;
+}
+
+.appName a {
+  display: flex;
+  color: white;
+  font-size: 18px;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+.appName a:hover {
+  color: #3a6186;
+}
+
+a:hover,
+button:hover {
+  color: #8d5866;
+}
+
+.dash, .past, .stats {
+  display: none;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.past {
+  padding-right: 20px;
+}
+
+.stats {
+  padding-right: 10px;
+}
+
+.nav-bar {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+button {
+  cursor: pointer;
+  padding: 10px;
+  margin: 5px;
+  font-size: 18px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-family: "Ovo", serif;
+  text-decoration: none;
+}
+
+
+/* computer */
+/* @media only screen and (min-width: 1200px)  */
+@media only screen and (min-width: 768px) {
+  .nav-bar, .links, .appName {
+    z-index: 1000;
+  }
+  /* .signout-icon {
+    display: none;
+  } */
+  .dash, .past, .stats {
+    display: block;
+    margin: 12px;
+  }
+
+  .links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: white;
+  }
+
+  .linkies {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}

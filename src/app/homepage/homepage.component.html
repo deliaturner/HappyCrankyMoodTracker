@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <h1>Sign In</h1>
+  <!-- if user auth.user$ -->
+  <div *ngIf="checkLoginStatus() | async as user; else login">
+  </div>
+    <!-- <div *ngIf="auth.user$ | async as user; else login"> -->
+    <!-- <div class="greeting"> -->
+    <!-- <div>Hi {{ user.displayName }}!</div> -->
+  <ng-template #login>
+    <button class="google btn" (click)="auth.googleSignin()">
+    <i class="fab fa-google fa-spin fa-5x"></i> <p>Click to sign In with Google</p>
+    </button>
+  </ng-template>
+</div>

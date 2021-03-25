@@ -1,0 +1,108 @@
+.wrapper {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 25px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.goToEntry {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  margin: 10px;
+}
+
+.goToEntry button {
+  font-size: 20px;
+  color: white;
+  font-family: "Ovo", serif;
+  border: none;
+  background-color: transparent;
+  margin-bottom: 20px;
+}
+.entryList {
+  width: 100%;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 12px;
+  max-width: 550px;
+}
+.entryList i {
+  font-size: 30px;
+}
+button {
+  color: white;
+  font-family: "Ovo", serif;
+  border: none;
+  background-color: transparent;
+}
+.dateAndTime button {
+  font-size: 22px;
+}
+
+button:hover {
+  cursor: pointer;
+  color: rgb(200, 215, 230);
+}
+
+.fa-plus {
+  color: white;
+  border-radius: 100%;
+  padding: 15px 17px;
+  background: #3a6186; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #89253e, #3a6186);
+  background: linear-gradient(to right, #89253e, #3a6186);
+}
+.fa-plus:hover {
+  opacity: 0.7;
+}
+.fa-trash-alt {
+  font-size: 25px;
+  color: rgb(197, 197, 197);
+}
+
+.fa-trash-alt:hover {
+  color: white;
+}
+
+/* tablet */
+@media only screen and (min-width: 768px) {
+  .entryList i {
+    font-size: 32px;
+  }
+    
+  .dateAndTime button {
+    font-size: 25px;
+  }  
+
+  .fa-edit,
+  .fa-trash-alt {
+    font-size: 25px;
+  }
+}
+
+/* computer */
+@media only screen and (min-width: 992px) {
+
+  .entryList i {
+    font-size: 35px;
+  }
+  
+  .dateAndTime button {
+    font-size: 30px;
+  }  
+
+  .fa-edit,
+  .fa-trash-alt {
+    font-size: 30px;
+  }
+}
