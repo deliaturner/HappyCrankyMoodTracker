@@ -1,12 +1,8 @@
-// import { EidAname } from './../models/eid-aname';
 import { Activity } from './../models/activity';
 import { Component, OnInit } from '@angular/core';
 import { MoodService } from '../services/mood.service';
-// import { Router, ActivatedRoute } from '@angular/router';
 import { Entry } from '../models/entry.model';
 import { AuthService } from './../services/auth.service';
-// import { ThisReceiver } from '@angular/compiler';
-// import { EntryActivity } from '../models/entryactivity';
 
 @Component({
   selector: 'app-stats',
@@ -16,11 +12,9 @@ import { AuthService } from './../services/auth.service';
 export class StatsComponent implements OnInit {
   userEntries: Entry[] = [];
   userEntriesD: Entry[] = [];
-  // userEntryAct: EntryActivity [] = [];
   userAct: Activity[] = [];
   userId: string = '';
   entryId: string = '';
-  // id: number;
   mood = 0;
   selctedUser = [];
   userDetails = [];
@@ -32,7 +26,6 @@ export class StatsComponent implements OnInit {
   SadActivitiesNamesandCategories = [];
   AllActivities: Activity[];
   ActivitySelected: Number;
-  // noActivitiesObject: EidAname = { aName: "None", aCategory: "None" };
   noactivity = "";
   hsheading = "";
   hBtnStatus = false;
@@ -45,15 +38,12 @@ export class StatsComponent implements OnInit {
 
   constructor(
     private moodService: MoodService,
-    // private router: Router,
-    // private route: ActivatedRoute,
     private auth: AuthService
   ) { }
 
   ngOnInit(): void {
     this.displayEntries();
   }
-
 
   displayEntries() {
     let mood: any = '';
@@ -115,7 +105,6 @@ export class StatsComponent implements OnInit {
     }
   }
 
-
   sadDaysDidThis() {
     this.sBtnStatus = true;
     this.hBtnStatus = false;
@@ -161,7 +150,3 @@ export class StatsComponent implements OnInit {
     }
   }
 }
-
-
-
-

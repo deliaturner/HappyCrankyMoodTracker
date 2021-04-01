@@ -30,7 +30,6 @@ export class PastentriesComponent implements OnInit {
     let entrydate: string = "";
     let entrytime: string = "";
     let journalentry: string = "";
-    
     this.auth.user$.subscribe(user => {
       this.id = user.uid;
       let userID: string = this.id;
@@ -58,9 +57,7 @@ export class PastentriesComponent implements OnInit {
     this.moodService.getAllEntryActivitiesPerEntryId(entry.id).subscribe(newList => {
       newList.forEach(element => {
         let newId = element.id;
-        // console.log(newId);
         this.moodService.deleteEntryFromEA(newId).subscribe(() => {
-          // console.log(`I'm deleting EA Table id = ${newId}`);
         })
       });
     })

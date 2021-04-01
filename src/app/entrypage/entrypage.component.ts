@@ -13,7 +13,7 @@ import { EntryActivity } from '../models/entryactivity';
 })
 export class EntryPageComponent implements OnInit {
 
-  constructor(public auth: AuthService, private moodService: MoodService, public router: Router, private ngZone:NgZone) { }
+  constructor(public auth: AuthService, private moodService: MoodService, public router: Router, private ngZone: NgZone) { }
 
   mood: number = 3;
   entrydate: string = "";
@@ -23,7 +23,6 @@ export class EntryPageComponent implements OnInit {
   newEntryId: number = 0;
   entryToEdit: any = {}
   newEntry: Entry;
-  // exsistingEntryId: number = this.item.id;
 
   get activityArray(): Activity[] {
     return this.moodService.activityArray;
@@ -46,7 +45,6 @@ export class EntryPageComponent implements OnInit {
       this.entrytime = this.entryToEdit.entrytime;
       this.journalentry = this.entryToEdit.journalentry;
       this.UserId = this.entryToEdit.UserId;
-
       this.moodService.getAllEntryActivitiesPerEntryId(this.entryToEdit.id).subscribe(result => {
         result.forEach(element => {
           this.activityList.push(element.activity_id);
@@ -68,7 +66,6 @@ export class EntryPageComponent implements OnInit {
     let dd = String(currentDate.getDate()).padStart(2, '0');
     let mm = String(currentDate.getMonth() + 1).padStart(2, '0');
     let yyyy = currentDate.getFullYear();
-
     this.entrydate = currentDate.toString();
     this.entrydate = mm + '/' + dd + '/' + yyyy;
   }
@@ -80,7 +77,6 @@ export class EntryPageComponent implements OnInit {
 
   toggleActivityList(id, event) {
     const checked = event.target.checked;
-
     if (checked) {
       this.activityList.push({ id });
     } else {
@@ -91,9 +87,7 @@ export class EntryPageComponent implements OnInit {
 
   addNewEntry() {
     this.auth.user$.subscribe(user => {
-
       this.UserId = user.uid;
-
       this.newEntry = {
         mood: this.mood,
         entrydate: this.entrydate,
@@ -101,61 +95,26 @@ export class EntryPageComponent implements OnInit {
         journalentry: this.journalentry,
         user_id: this.UserId
       }
-
-      console.log(this.newEntry);
-
       this.moodService.addNewEntry(this.newEntry).subscribe(result => {
-        console.log(result);
-
         let emptyMood = "";
         let emptyEntryDate = "";
         let emptyEntrytime = "";
         let emptyJournalentry = "";
         let emptyUserId = "";
-
         this.moodService.getUserEntries(emptyMood, emptyEntryDate, emptyEntrytime, emptyJournalentry, emptyUserId).subscribe(result => {
           this.newEntryId = result[0].id;
-          console.log(this.newEntryId);
-          
           this.activityList.forEach(activity => {
             let newEntryActivity: EntryActivity = {
               entry_id: this.newEntryId,
               activity_id: activity.id
             }
-            console.log(newEntryActivity);
             this.moodService.addEntryActivities(newEntryActivity).subscribe(result => {
             });
           });
           this.router.navigate(['/pastentries']);
         })
-        // this.ngZone.run(() => {
-        //   this.router.navigate(['/pastentries']);
-        // })    
       })
     });
   }
-
-  // updateEntry() {
-  // this.auth.user$.subscribe(user => {
-  //   this.UserId = user.uid;
-
-  //   let entryObject = {
-  //     mood: this.mood,
-  //     entrydate: this.entrydate,
-  //     entrytime: this.entrytime,
-  //     journalentry: this.journalentry,
-  //     user_id: this.UserId,
-  //     id: this.entryToEdit.id
-  //   }
-  //   console.log(entryObject);
-  //   this.moodService.updateEntry(this.entryToEdit.id, entryObject).subscribe(result => {
-  //     console.log(entryObject);
-  //     console.log(result);
-
-  //     console.log(this.entryToEdit.id);
-
-  //   })
-  // })
-  // }
 }
 

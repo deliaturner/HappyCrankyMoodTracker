@@ -38,7 +38,9 @@ button:hover {
   color: #8d5866;
 }
 
-.dash, .past, .stats {
+.dash,
+.past,
+.stats {
   display: none;
 }
 
@@ -72,17 +74,18 @@ button {
   text-decoration: none;
 }
 
-
 /* computer */
 /* @media only screen and (min-width: 1200px)  */
 @media only screen and (min-width: 768px) {
-  .nav-bar, .links, .appName {
+  .nav-bar,
+  .links,
+  .appName {
     z-index: 1000;
   }
-  /* .signout-icon {
-    display: none;
-  } */
-  .dash, .past, .stats {
+
+  .dash,
+  .past,
+  .stats {
     display: block;
     margin: 12px;
   }

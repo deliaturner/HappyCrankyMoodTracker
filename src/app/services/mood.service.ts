@@ -1,9 +1,7 @@
-import { EidAname } from './../models/eid-aname';
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { EntryActivity } from '../models/entryactivity';
 import { Activity } from '../models/activity';
 import { Entry } from '../models/entry.model';
@@ -59,11 +57,6 @@ export class MoodService {
     return this.http.post<any[]>(this.apiURL, newEntry);
   }
 
-  // updateEntry(entryID: number, entryObject: any): Observable<any[]> {       
-  //   return this.http.put<any[]>(`http://localhost:3000/entries` + `/${entryID}`, 
-  //   JSON.stringify(entryObject));
-  // }
-
   getAllEntryActivitiesPerEntryId(entryId: string): Observable<any> {
     return this.http.get<any[]>(
       `https://happy-cranky.herokuapp.com/entryactivities`,
@@ -105,7 +98,4 @@ export class MoodService {
   getAllActivities(): Observable<Activity[]> {
     return this.http.get<Activity[]>('https://happy-cranky.herokuapp.com/activities');
   }
-
-  
-
 }
