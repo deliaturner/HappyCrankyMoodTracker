@@ -3,52 +3,48 @@
 
 <p></p>
 <div class="happysadbuttons">
-  <button class="happybutton" (click)="happyDaysDidThis()" [ngClass]="hBtnStatus ? 'h-active' : ''">
+  <button
+    class="happybutton"
+    (click)="happyDaysDidThis()"
+    [ngClass]="hBtnStatus ? 'h-active' : ''"
+  >
     Happy Day Activities
   </button>
-  <button class="sadbutton" (click)="sadDaysDidThis()" [ngClass]="sBtnStatus ? 's-active' : ''">
+  <button
+    class="sadbutton"
+    (click)="sadDaysDidThis()"
+    [ngClass]="sBtnStatus ? 's-active' : ''"
+  >
     Sad Day Activities
   </button>
 </div>
 
-<div *ngIf="!sBtnStatus && !hBtnStatus; then selectReport; else listresults" >
-</div>
+<div
+  *ngIf="!sBtnStatus && !hBtnStatus; then selectReport; else listresults"
+></div>
 
 <ng-template #selectReport>
-<h2 #selectReport>Select a report above</h2>
+  <h2 #selectReport>Select a report above</h2>
 </ng-template>
-  
-<ng-template #listresults class="list">
 
-  <!-- <div *ngIf="!loopFinished">
-    <h2>Loading your results. Please stay tuned.</h2>
-  </div> -->
-  <div *ngIf="loopFinished">
-    <h3>{{hsheading}}</h3>
-    <div class="happyDays" *ngFor="let each of HappyActivitiesNamesandCategories">
+<ng-template #listresults class="list">
+  <div>
+    <h3>{{ hsheading }}</h3>
+    <div
+      class="happyDays"
+      *ngFor="let each of HappyActivitiesNamesandCategories"
+    >
       <div class="category">{{ each.category }}</div>
       <div class="name">{{ each.name }}</div>
       <div class="amount">{{ each.amount }}</div>
+    </div>
+    <div class="sadDays" *ngFor="let each of SadActivitiesNamesandCategories">
+      <div class="category">{{ each.category }}</div>
+      <div class="name">{{ each.name }}</div>
+      <div class="amount">{{ each.amount }}</div>
+    </div>
   </div>
-  <div class="sadDays" *ngFor="let each of SadActivitiesNamesandCategories">
-    <div class="category">{{ each.category }}</div>
-    <div class="name">{{ each.name }}</div>
-    <div class="amount">{{ each.amount }}</div>
-  </div>
-</div>
-<h4>
-    {{noactivity}}
+  <h4>
+    {{ noactivity }}
   </h4>
 </ng-template>
-
-<!-- <div class="list">
-  <div class="happyDays" *ngFor="let each of HappyActivitiesNamesandCategories">
-    <div *ngif="each.aCategory !== None">Category: {{ each.aCategory }} - Activity: {{ each.aName }}</div>
-    <div *ngif="each.aCategory === None">You have no happy days to display.</div>
-  </div>
-  <div class="sadDays" *ngFor="let each of SadActivitiesNamesandCategories">
-    <div *ngif="each.aCategory !== None">Category: {{ each.aCategory }} - Activity: {{ each.aName }}</div>
-    <div *ngif="each.aCategory === None">You have no sad days to display.</div>
-  </div>
-</div> -->
-

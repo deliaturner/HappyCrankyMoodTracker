@@ -17,7 +17,7 @@ export class StatsComponent implements OnInit {
   userEntries: Entry[] = [];
   userEntriesD: Entry[] = [];
   // userEntryAct: EntryActivity [] = [];
-  userAct: Activity [] = [];
+  userAct: Activity[] = [];
   userId: string = '';
   entryId: string = '';
   // id: number;
@@ -53,7 +53,7 @@ export class StatsComponent implements OnInit {
   ngOnInit(): void {
     this.displayEntries();
   }
-  
+
 
   displayEntries() {
     let mood: any = '';
@@ -74,10 +74,9 @@ export class StatsComponent implements OnInit {
   happyDaysDidThis() {
     this.hBtnStatus = true;
     this.sBtnStatus = false;
-    this.loopFinished = false;
     this.SadActivitiesNamesandCategories = [];
     this.hsheading = "You did these activities most on your happy days";
-    // let i = 0;
+    let i = 0;
     this.happyDays = [];
     this.happyActivitiesIds = [];
     this.userEntriesD.forEach((element) => {
@@ -88,55 +87,34 @@ export class StatsComponent implements OnInit {
     });
     if (this.happyDays.length === 0) {
       this.noactivity = "You have no happy days to report";
-      // this.HappyActivitiesNamesandCategories.push(this.noActivitiesObject);
     } else {
       this.HappyActivitiesNamesandCategories = [];
-      // let newHEId;
-      // let newHAId;
-      // let newHObject: EidAname;
       this.happyDays.forEach((element) => {
         this.moodService.getAllEntryActivitiesPerEntryId(element).subscribe((result) => {
-              result.forEach((EAResult, index) => {
-                this.moodService.getActivityNameAndCategory(EAResult.activity_id).subscribe((fullActivity: any) => {
-
-                  let foundActivity = this.HappyActivitiesNamesandCategories.find(activity => activity.id === fullActivity.id)
-                  
-                  if (foundActivity) {
-                    foundActivity.amount = foundActivity.amount + 1;
-                  } else {
-                    let activityObject = {
-                      id: fullActivity.id,
-                      name: fullActivity.name,
-                      category: fullActivity.category,
-                      amount: 1
-                    }
-                    this.HappyActivitiesNamesandCategories.push(activityObject);
-                  }
-                  if (index === result.length -1) {
-                    this.HappyActivitiesNamesandCategories.sort((a, b) => {
-                      return b.amount - a.amount;
-                    });   
-                    this.loopFinished = true;  
-                  }
-                })
-              });
-              //   for (i = 0; i < result.length; i++) {
-              //   newHEId = result[i].entry_id;
-              //   newHAId = result[i].activity_id;
-              //   this.moodService
-              //     .getActivityNameAndCategory(newHAId)
-              //     .subscribe((newResult: any) => {
-              //       newHObject = {
-              //         aName: newResult.name,
-              //         aCategory: newResult.category,
-              //       };
-              //       this.HappyActivitiesNamesandCategories.push(newHObject);
-              //   });
-              // }
+          for (i = 0; i < result.length; i++) {
+            this.moodService.getActivityNameAndCategory(result[i].activity_id).subscribe((fullActivity: any) => {
+              let foundActivity = this.HappyActivitiesNamesandCategories.find(activity => activity.id === fullActivity.id)
+              if (foundActivity) {
+                foundActivity.amount = foundActivity.amount + 1;
+              } else {
+                let activityObject = {
+                  id: fullActivity.id,
+                  name: fullActivity.name,
+                  category: fullActivity.category,
+                  amount: 1
+                }
+                this.HappyActivitiesNamesandCategories.push(activityObject);
+              }
+            });
+            this.HappyActivitiesNamesandCategories.sort((a, b) => {
+              return b.amount - a.amount;
+            })
+          }
         });
       });
-    }    
+    }
   }
+
 
   sadDaysDidThis() {
     this.sBtnStatus = true;
@@ -144,7 +122,7 @@ export class StatsComponent implements OnInit {
     this.loopFinished = false;
     this.HappyActivitiesNamesandCategories = [];
     this.hsheading = "You did these activities most on your sad days";
-    // let i = 0;
+    let i = 0;
     this.sadDays = [];
     this.sadActivitiesIds = [];
     this.userEntriesD.forEach((element) => {
@@ -155,20 +133,13 @@ export class StatsComponent implements OnInit {
     });
     if (this.sadDays.length === 0) {
       this.noactivity = "You have no sad days to report";
-      // this.SadActivitiesNamesandCategories.push(this.noActivitiesObject);
     } else {
       this.SadActivitiesNamesandCategories = [];
-      // let newSEId;
-      // let newSAId;
-      // let newSObject: EidAname;
-
       this.sadDays.forEach((element) => {
         this.moodService.getAllEntryActivitiesPerEntryId(element).subscribe((result) => {
-          result.forEach((EAResult, index) => {
-            this.moodService.getActivityNameAndCategory(EAResult.activity_id).subscribe((fullActivity: any) => {
-
+          for (i = 0; i < result.length; i++) {
+            this.moodService.getActivityNameAndCategory(result[i].activity_id).subscribe((fullActivity: any) => {
               let foundActivity = this.SadActivitiesNamesandCategories.find(activity => activity.id === fullActivity.id)
-              
               if (foundActivity) {
                 foundActivity.amount = foundActivity.amount + 1;
               } else {
@@ -180,33 +151,17 @@ export class StatsComponent implements OnInit {
                 }
                 this.SadActivitiesNamesandCategories.push(activityObject);
               }
-              if (index === result.length -1) {
-                this.SadActivitiesNamesandCategories.sort((a, b) => {
-                  return b.amount - a.amount;
-                });   
-                this.loopFinished = true;
-              }
-            })
-          });
-          // for (i = 0; i < result.length; i++) {
-              //   newSEId = result[i].entry_id;
-              //   newSAId = result[i].activity_id;
-              //   this.moodService
-              //     .getActivityNameAndCategory(newSAId)
-              //     .subscribe((newResult: any) => {
-              //       newSObject = {
-              //         aName: newResult.name,
-              //         aCategory: newResult.category,
-              //       };
-              //       this.SadActivitiesNamesandCategories.push(newSObject);
-              //     });
-              // }
             });
-          });
-        }    
-      }    
+            this.SadActivitiesNamesandCategories.sort((a, b) => {
+              return b.amount - a.amount;
+            })
+          }
+        });
+      });
+    }
+  }
 }
 
- 
-  
+
+
 
