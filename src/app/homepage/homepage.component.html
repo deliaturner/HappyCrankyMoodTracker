@@ -3,7 +3,7 @@
   <div *ngIf="checkLoginStatus() | async as user; else login"></div>
   <ng-template #login>
     <button class="google btn" (click)="auth.googleSignin()">
-      <i class="fab fa-google fa-spin fa-5x"></i>
+      <i class="fab fa-google fa-5x"></i>
       <p>Click to sign In with Google</p>
     </button>
   </ng-template>
